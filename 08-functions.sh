@@ -15,12 +15,16 @@ VALIDATE(){
        exit
        fi
 }
-if [ $USERID -ne 0 ]
-then
-   echo "Please run this script with root priveleges"
-   exit 1
 
+CHECK_ROOT() {
+    if [ $USERID -ne 0 ]
+    then
+    echo "Please run this script with root priveleges"
+    exit 1
+    fi
+}
 
+CHECK_ROOT
 dnf list installed git 
 
 VALIDATE $? "Listing Git"
@@ -28,18 +32,18 @@ VALIDATE $? "Listing Git"
 
 
 
-# if [ $? -ne 0]
-# then 
-#     echo "Git is not installed,going to install it.."
-#     dnf install git -y
-#     if [ $? -ne o ]
-#     then 
-#        echo "Git installation is not sucess...check it"
-#        exit 1
-# else 
-#    echo "Git installation is sucess"
-# fi
+if [ $? -ne 0 ]
+then 
+    echo "Git is not installed,going to install it.."
+    dnf install git -y
+    if [ $? -ne o ]
+    then 
+       echo "Git installation is not sucess...check it"
+       exit 1
+    else 
+       echo "Git installation is sucess"
+    fi
 
-# else 
-#    echo "Git is already installed/ noting to do.."
+else 
+   echo "Git is already installed/ noting to do.."
  fi

@@ -47,3 +47,20 @@ then
 else 
    echo "Git is already installed/ noting to do.."
  fi
+
+
+ if [ $? -ne 0 ]
+then 
+    echo "nginx is not installed,going to install it.."
+    dnf install nginx -y
+    if [ $? -ne o ]
+    then 
+       echo "nginx installation is not sucess...check it"
+       exit 1
+    else 
+       echo "nginx installation is sucess"
+    fi
+
+else 
+   echo "nginx is already installed/ noting to do.."
+ fi

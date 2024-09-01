@@ -26,7 +26,7 @@ CHECK_ROOT() {
 
 CHECK_ROOT
 
-for packages in $@
+for package in $@
 do
 
   dnf list installed $package

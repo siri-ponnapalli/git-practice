@@ -29,25 +29,21 @@ CHECK_ROOT
 for packages in $@
 do
 
-   echo $packages
-
-done
-
-
-
-
-if [ $? -ne 0 ]
-then 
-    echo "Git is not installed,going to install it.."
-    dnf install git -y
+  dnf list installed $package
+  if [ $? -ne 0 ]
+  then
+    echo "$package is not installed,going to install it.."
+    dnf install $package -y
     if [ $? -ne o ]
     then 
-       echo "Git installation is not sucess...check it"
+       echo "$package installation is not sucess...check it"
        exit 1
     else 
-       echo "Git installation is sucess"
+       echo "$package installation is sucess"
     fi
 
 else 
-   echo "Git is already installed/ noting to do.."
+   echo "$package is already installed/ noting to do.."
  fi
+
+done

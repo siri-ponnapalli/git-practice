@@ -42,4 +42,4 @@ VALIDATE $? "Listing Git"
 
 # else 
 #    echo "Git is already installed/ noting to do.."
-# fi
+ fi

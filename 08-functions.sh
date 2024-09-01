@@ -1,23 +1,31 @@
 #!/bin/bash
 USERID=$(id -u)
-echo "USER ID is: $USERID"
+#echo "USER ID is: $USERID"
+
 
 
 
 VALIDATE(){
-    echo "exit status: $1"
-
+    if [ $1 -ne 0 ]
+    then
+       echo "$2is...FAILED"
+       exit 1
+    else
+       echo "$2 is...SUCCESS"
+       exit
+       fi
 }
-if "[ $USERID -ne 0]"
+if [ $USERID -ne 0 ]
 then
-    echo "Please run this script with root priveleges"
-    exit 1
+   echo "Please run this script with root priveleges"
+   exit 1
 
-fi
 
-dnf install git -y
-dnf list installed git
-VALIDATE $?
+dnf list installed git 
+
+VALIDATE $? "Listing Git"
+
+
 
 
 # if [ $? -ne 0]

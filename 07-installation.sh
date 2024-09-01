@@ -7,4 +7,8 @@ then
 fi
 
 dnf install git -y
+# dnf install git -y
+ls -ltr
+lsdsdg -ltr
+ls -l
 

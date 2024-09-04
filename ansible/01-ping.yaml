@@ -1,6 +1,0 @@
-#!/bin/bash
--name: ping the server
-hosts: web
-tasks:
--name: ping the server
- ansible.builtin.ping:
